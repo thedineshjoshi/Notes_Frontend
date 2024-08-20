@@ -1,0 +1,46 @@
+<div class="dashboard">
+  <header>
+    <div class="username">Welcome, {{ username }}</div>
+    <button class="headerbtn" (click)="navigateToAddNote()">Add Note</button> 
+    <button class="headerbtnLogout" (click)="logout()">Log Out</button> 
+  </header>
+  <input type="text"  [(ngModel)]="searchLabel" (ngModelChange)="searchNotes()" placeholder="Search by label">
+  <button (click)="searchNotes()">Search</button>
+  <div class="note-container" [ngStyle]="{'background-color': note.bgColor}" *ngFor="let note of notes">
+
+    <!-- Display Note Details -->
+    <div *ngIf="!note.editMode" [ngStyle]="{'background-color': note.bgColor, 'color': note.fontColor}"  class="note-card">
+      <p [ngStyle]="{'color':note.fontColor}" style="float:right"><strong>Created On:</strong> {{ note.createdAt | date:'short' }} &nbsp;
+      <strong >Updated On:</strong> {{ note.updatedAt | date:'short' }}</p>
+      <h3 [ngStyle]="{'color':note.fontColor}">{{ note.title }}</h3>
+      <p [ngStyle]="{'color':note.fontColor}">{{ note.label }}</p>
+      <p [ngStyle]="{'color':note.fontColor}">{{ note.content }}</p>  
+      <button (click)="editNote(note)" >Edit</button>
+      <button (click)="deleteNote(note.id)" >Delete</button>
+    </div>
+  
+    <!-- Edit Note Form -->
+    <div *ngIf="note.editMode">
+      <form (ngSubmit)="updateNote(note.id, note)">
+        <div>
+          <label for="title">Title:</label>
+          <input id="title" [(ngModel)]="note.title" name="title" required />
+        </div>
+        <div>
+          <label for="label">Label:</label>
+          <input id="label" [(ngModel)]="note.label" name="label" required />
+        </div>
+        <div>
+          <label for="content">Content:</label>
+          <textarea id="content" [(ngModel)]="note.content" name="content" required></textarea>
+        </div>
+        <label for="bgColor">Background Color:</label>
+         <input type="color" id="bgColor"[ngModelOptions]="{standalone: true}" [(ngModel)]="note.bgColor">
+         <label for="fontColor">Font Color:</label>
+          <input type="color" id="fontColor"[ngModelOptions]="{standalone: true}" [(ngModel)]="note.fontColor">
+        <button type="submit">Update</button>
+        <button (click)="cancelEdit(note)">Cancel</button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,20 @@
+<section class="note-form">
+  <button class="headerbtnLogout" (click)="navigateToDashboard()">Cancel</button> 
+  <h2>Create a Note</h2>
+
+    <form (ngSubmit)="createNote()">
+      <label for="title">Title:</label>
+      <input id="title"[ngModelOptions]="{standalone: true}" [(ngModel)]="newNote.Title" name="title" required>
+      <label for="label">Label:</label>
+      <input id="label"[ngModelOptions]="{standalone: true}" [(ngModel)]="newNote.Label" name="label">
+      
+      <label for="bgColor">Background Color:</label>
+      <input type="color" id="bgColor"[ngModelOptions]="{standalone: true}" [(ngModel)]="newNote.BgColor">
+      <label for="fontColor">Font Color:</label>
+      <input type="color" id="fontColor"[ngModelOptions]="{standalone: true}" [(ngModel)]="newNote.FontColor">
+      
+      <label for="content">Content:</label>
+      <textarea id="content"[ngModelOptions]="{standalone: true}" [(ngModel)]="newNote.Content" name="content" required></textarea>
+      <button type="submit">Add Note</button>
+    </form>
+  </section>

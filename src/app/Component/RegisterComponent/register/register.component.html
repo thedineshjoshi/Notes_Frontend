@@ -1,0 +1,45 @@
+<div class="body">
+    <div class="form-container">
+      <form [formGroup]="userRegistrationForm" (ngSubmit)="register()">
+        <h2>Register</h2>
+  
+        <div class="input-group" [ngClass]="{'has-error': isFieldInvalid('FirstName')}">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" formControlName="FirstName" required>
+          <div *ngIf="isFieldInvalid('FirstName')" class="error-message">Please fill the field</div>
+        </div>
+  
+        <div class="input-group" [ngClass]="{'has-error': isFieldInvalid('LastName')}">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" formControlName="LastName" required>
+          <div *ngIf="isFieldInvalid('LastName')" class="error-message">Please fill the field</div>
+        </div>
+  
+        <div class="input-group" [ngClass]="{'has-error': isFieldInvalid('Email')}">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="Email" required>
+          <div *ngIf="isFieldInvalid('Email')" class="error-message">Enter a valid email</div>
+        </div>
+  
+        <div class="input-group" [ngClass]="{'has-error': isFieldInvalid('UserName')}">
+          <label for="username">Username</label>
+          <input type="text" id="username" formControlName="UserName" required>
+          <div *ngIf="isFieldInvalid('UserName')" class="error-message">Username must contain letters and numbers</div>
+        </div>
+  
+        <div class="input-group" [ngClass]="{'has-error': isFieldInvalid('PasswordHash')}">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="PasswordHash" required>
+            <div *ngIf="isFieldInvalid('PasswordHash')" class="error-message">Password must contain special characters, numbers, and uppercase letters</div>
+          </div>
+    
+          <div class="input-group" [ngClass]="{'has-error': isFieldInvalid('ConfirmPassword') || userRegistrationForm.hasError('mismatch')}">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" formControlName="ConfirmPassword" required>
+            <div *ngIf="userRegistrationForm.hasError('mismatch')" class="error-message">Passwords do not match</div>
+          </div>
+        <button type="submit" class="register-btn">Register</button>
+      </form>
+    </div>
+  </div>
+  

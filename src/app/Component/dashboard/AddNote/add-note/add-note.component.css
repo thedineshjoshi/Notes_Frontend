@@ -1,0 +1,116 @@
+/* Styling for the Add Note section */
+.note-form {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  max-width: 600px; /* Limit max-width for larger screens */
+  margin: 20px auto; /* Center the form on larger screens */
+}
+
+.note-form h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #007bff;
+  text-align: center;
+}
+
+.note-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.note-form input, 
+.note-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.note-form input:focus, 
+.note-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.headerbtnLogout{
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: white;
+  float: right;
+}
+
+.note-form button[type="submit"] {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1em;
+  display: block;
+  width: 100%;
+}
+
+.note-form button[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .note-form {
+    padding: 15px;
+    margin: 15px;
+  }
+
+  .note-form h2 {
+    font-size: 1.5em;
+  }
+
+  .note-form input, 
+  .note-form textarea {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .note-form button[type="submit"] {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .note-form {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .note-form h2 {
+    font-size: 1.3em;
+  }
+
+  .note-form input, 
+  .note-form textarea {
+    padding: 6px;
+    font-size: 0.8em;
+  }
+
+  .note-form button[type="submit"] {
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+}
